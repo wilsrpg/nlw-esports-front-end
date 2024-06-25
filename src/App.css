@@ -1,0 +1,660 @@
+body {
+  background-image: url('./imagens/NLW-Fundo.png');
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+input, select {
+  background-color: white;
+}
+
+input[type=time] {
+  width: 4.5rem;
+}
+
+.conteudo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  margin: 3rem auto;
+  padding: 1rem;
+  font-family: Inter, sans-serif;
+  z-index: 0;
+}
+
+.conteudo * {
+  max-width: 100%;
+  word-break: break-word;
+}
+
+a, button {
+  color: white;
+}
+
+button, .botao {
+  border-style: outset;
+  border-width: 1px;
+  background-color: #8b5cf6;
+  border-radius: 4px;
+}
+button:hover, .botao:hover {
+  background-color: #7c3aed;
+}
+button:active, .botao:active {
+  border-style: inset;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 900;
+  text-align: center;
+  margin: 3rem;
+}
+
+.gradienteNlwGay {
+  background: linear-gradient(to right, #9572fc, #43e7ad 35%, #e1d55d);
+}
+
+span.gradienteNlwGay {
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.jogos {
+  width: 100%;
+  max-width: 50rem;
+  padding: 0.5rem 0;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  overflow: auto;
+}
+@media only screen and (max-width: 600px) {
+  .jogos {
+    grid-auto-flow: row;
+    justify-content: center;
+    max-height: 90vh;
+  }
+}
+
+.jogos a {
+  width: fit-content;
+}
+
+.cartaoJogo {
+  position: relative;
+  height: 10rem;
+  width: 10rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.imagemDoJogo {
+  height: 10rem;
+  width: 10rem;
+  border-radius: 0.5rem;
+  object-fit: cover;
+  object-position: center;
+}
+
+.carregando {
+  /*height: 1.5rem;*/
+  width: 1.5rem;
+  justify-self: center;
+}
+
+.gradientePretoEmbaixo {
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.9) 67%);
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  padding: 0.5rem;
+  border-radius: 0.4rem;
+  box-sizing: border-box;
+}
+
+/*strong {
+  color: white;
+  font-weight: bold;
+}*/
+
+p {
+  color: #d4d4d8;
+  margin: 0;
+  font-size: 87.5%;
+}
+
+.caixaAtras {
+  margin: 1rem;
+  border-radius: 0.5rem;
+}
+
+.caixaFrente {
+  position: relative;
+  top: 0.25rem;
+  display: flex;
+  align-items: center;
+  padding: 1.5rem;
+  background-color: #2a2634;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  gap: 1rem;
+}
+@media only screen and (max-width: 600px) {
+  .caixaFrente {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.botaoAbrirModalPraPublicar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.5rem;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  /*flex-shrink: 0;*/
+  /*max-width: 50%;*/
+}
+
+.lupa {
+  width: 2rem;
+}
+
+.flex {
+	display: flex;
+	gap: 0.5rem;
+}
+
+.flexColumn {
+  flex-direction: column;
+}
+
+.flexWrap {
+  flex-wrap: wrap;
+}
+
+.alignCenter {
+  align-items: center;
+}
+
+.centralizado {
+  display: grid;
+  place-items: center center;
+}
+
+.roxinho {
+  background-color: #8b5cf6;
+}
+.roxinho:hover {
+  background-color: #7c3aed;
+}
+
+.roxinhoOcupado {
+  background-color: #8b5cf6;
+  cursor: wait;
+}
+
+.modalAnuncioFora {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: rgba(0,0,0,0.5);
+  display: grid;
+  place-items: center center;
+  cursor: auto;
+}
+
+.semFundo {
+  background-color: rgba(0,0,0,0);
+}
+
+.modalAnuncio {
+  position: relative;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+  background-color: #71717a;
+  padding: 1rem;
+  gap: 1rem;
+  border: 1px solid #7c3aed;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+@media only screen and (max-height: 500px) {
+  .modalAnuncio .imagemDoJogo {
+    height: 4rem;
+    width: 4rem;
+  }
+}
+
+h2 {
+  max-width: 20rem;
+  margin: 0;
+}
+
+@keyframes chamarAtencao {
+  from {background-color: red;}
+  to {}
+}
+
+.tempoDeJogo {
+  width: 1.5rem;
+}
+
+.dias {
+  width: fit-content;
+}
+
+.dias input {
+  width: 1.25rem;
+  text-align: center;
+  border-radius: 15%;
+  border-width: 1px;
+}
+
+.aoLado {
+  display: grid;
+  grid: auto/auto auto;
+  gap: 0.5rem;
+}
+@media only screen and (max-width: 700px) {
+  .aoLado {
+    grid: auto/100%;
+  }
+}
+
+.chatDeVoz {
+  display: flex;
+  align-items: center;
+  height: 2rem;
+}
+
+.chatDeVoz input {
+  width: 5%;
+  height: 100%;
+  accent-color: #8b5cf6;
+}
+
+.botaoPublicarAnuncio {
+  /*width: 50%;*/
+  padding: 0 1.5rem;
+  height: 2.5rem;
+  font-size: 1rem;
+  align-self: center;
+  justify-self: center;
+}
+
+.jogoSelecionado {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.anuncios {
+  width: 100%;
+  display: grid;
+  grid-auto-flow: column;
+  gap: 1rem;
+  overflow: auto;
+}
+@media only screen and (max-width: 600px) {
+  .anuncios {
+    grid-auto-flow: row;
+    justify-content: center;
+  }
+}
+
+.cartaoAnuncio {
+  width: 12rem;
+  height: fit-content;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: grid;
+  background-color: #2a2634;
+  flex-shrink: 0;
+  border: solid 1px transparent;
+  position: relative;
+}
+@media only screen and (max-height: 500px) {
+  .cartaoAnuncio {
+    font-size: 70%;
+  }
+}
+
+.cartaoAnuncio strong {
+  margin-bottom: 0.5rem;
+}
+
+.cursorAjuda {
+  cursor: help;
+}
+
+.botaoCopiar {
+  height: 1.5rem;
+  width: 1.5rem;
+  opacity: 0.5;
+}
+.botaoCopiar:hover {
+  opacity: 1;
+}
+
+.modalConectarInterior {
+  display: grid;
+  justify-items: center;
+  gap: 1.5rem;
+}
+
+.discord {
+  margin-top: 0.5rem;
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  background-color: #2a2634;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  /*max-width: 15rem;*/
+}
+
+.discord strong {
+  max-width: 15rem;
+}
+
+.botaoFechar {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+}
+
+.cabecalho {
+  width: 100%;
+  min-height: 3.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.cabecalho a {
+  opacity: 0.75;
+}
+.cabecalho a:hover {
+  opacity: 1;
+}
+
+.barraSuperior {
+  height: 100%;
+  display: flex;
+  padding: 1rem;
+  box-sizing: border-box;
+  justify-content: space-between;
+  background-color: #2a2634;
+  text-align: center;
+}
+
+.gambiarra {
+  position: absolute;
+  top: 0;
+  max-height: 99vh;
+  display: flex;
+  flex-direction: column;
+}
+.invisivel {
+  height: 3.5rem;
+  flex-shrink: 0;
+}
+.menuSuspenso {
+  gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  background-color: #2a2634;
+  overflow: auto;
+}
+
+.direita {
+  right: 0;
+}
+
+.barraSuperior nav {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.botaoEntrar {
+  width: 3.5rem;
+}
+
+.formularioDeEntradaSuspenso {
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: auto auto;
+}
+
+.registrar {
+  align-self: center;
+}
+
+.registrar a {
+  opacity: 0.75;
+}
+.registrar a:hover {
+  opacity: 1;
+}
+
+/*.mensagemDeErro {
+  position: absolute;
+  font-size: small;
+  color: red;
+}*/
+.mensagemDeErro {
+  /*align-self: center;*/
+  font-size: small;
+  color: red;
+}
+/*.mensagemDeSucesso {
+  position: absolute;
+  font-size: small;
+  color: green;
+}*/
+
+.alturaBase {
+  height: 1.5rem;
+}
+
+.alturaBase .carregando {
+  height: 100%;
+}
+
+.barraSuperior .nomeDoUsuario {
+  font-weight: 700;
+}
+
+.jogosPagina {
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.fundoSemitransparente {
+  background-color: rgba(42, 38, 52, 0.5);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  max-width: 768px;
+}
+
+.formularioDePesquisa {
+  /*align-items: center;*/
+  justify-content: start;
+}
+
+.resultadosDaPesquisa {
+  align-items: center;
+  /*justify-content: start;*/
+  position: relative;
+  width: 100%;
+}
+
+.resultadosDaPesquisa .cabecalho {
+  justify-content: space-between;
+  top: 3.5rem;
+}
+
+.opcoesDePagina {
+  /*position: absolute;
+  right: 0;*/
+  font-size: small;
+  color: #d4d4d8;
+  /*margin: 0;*/
+  /*font-size: 87.5%;*/
+  /*align-items: end;*/
+  justify-content: end;
+  text-align: end;
+}
+
+.justifyEnd {
+  justify-content: end;
+}
+
+.formularioDePesquisa input, .formularioDePesquisa select {
+  align-self: start;
+}
+
+.opcoesDePagina input, .opcoesDePagina select {
+  align-self: start;
+  /*max-width: 100%;*/
+}
+
+.linkDePagina {
+  cursor: pointer;
+}
+.linkDePagina:hover {
+  color: white;
+}
+
+label.paginaAtual {
+  color: white;
+  font-weight: bold;
+  cursor: default;
+}
+
+.paginas {
+  height: fit-content;
+  max-width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.excluirConta {
+  background-color: red;
+}
+.excluirConta:hover {
+  background-color: firebrick;
+}
+
+.semShrink {
+  flex-shrink: 0;
+}
+
+.botoes {
+	display: flex;
+	gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.botaoIrParaJogos {
+  width: 2.5rem;
+  align-self: center;
+  justify-self: center;
+  opacity: 0.5;
+}
+.botaoIrParaJogos:hover {
+  opacity: 1;
+}
+
+.botaoIrParaJogos a {
+  display: block;
+  width: 100%;
+}
+
+.botaoIrParaJogos img {
+  display: block;
+}
+
+.manterSessao {
+  display: flex;
+  font-size: small;
+  color: #d4d4d8;
+  align-self: center;
+}
+
+.manterSessao input {
+  margin: 0 0.25rem;
+}
+
+.manterSessao .reduzido {
+  font-size: 0.6rem;
+  max-width: 3.25rem;
+}
+
+.comEspacoParaMensagemDeErro {
+  /*position: relative;*/
+  display: flex;
+  flex-direction: column;
+	gap: 0.5rem;
+  align-items: center;
+}
+
+.spaceEvenly {
+  justify-content: space-evenly;
+  /*width: 100%;*/
+  /*background-color: #43e7ad;*/
+}
+
+/*.nomeNoJogo {
+  width: 100%;
+  box-sizing: border-box;
+}*/
+
+.botaoMais {
+  align-self: start;
+}
+
+.emailRecuperar {
+  width: 20rem;
+  text-align: center;
+}
+
+.configuracoes{
+	display: flex;
+	gap: 0.5rem;
+  flex-direction: column;
+  align-items: center;
+}
+
+.configuracoes label {
+  color: #d4d4d8;
+  margin: 0;
+  font-size: 87.5%;
+}
