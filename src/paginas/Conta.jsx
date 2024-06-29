@@ -1,11 +1,12 @@
 import React, { useContext, useEffect } from 'react'
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import { contexto } from '../App';
 //import FormularioDeEntrada from '../componentes/FormularioDeEntrada';
 
 export default function Conta() {
   const contexto2 = useContext(contexto);
   const historico = useHistory();
+  const urlAtual = useLocation();
 
   //useEffect(()=>{
   //  if (!contexto2.usuarioLogado)
@@ -20,7 +21,7 @@ export default function Conta() {
       historico.push('/entrar');
       return;
     }
-  }, [])
+  }, [urlAtual])
 
   return (
     <div className='conteudo'>

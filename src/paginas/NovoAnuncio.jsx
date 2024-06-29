@@ -108,7 +108,7 @@ export default function NovoAnuncio() {
         //  document.getElementById('quando'+id).style.animation = '';
         //  //dias.map(dia=>document.getElementById(dia.dia).style.animation = '')
         //}, 1000);
-        definirMensagemErroHorario('Selecione pelo menos um dia para cada horário.');
+        definirMensagemErroHorario('Selecione pelo menos um dia por horário.');
         tdsdisps = false;
       }
     });
@@ -198,11 +198,15 @@ export default function NovoAnuncio() {
         })
         .catch(erro=>{
           console.log(erro);
-          if (erro.codigo == 401) {
+          if (erro.codigo == 401) { //sessão inexistente
             document.cookie = 'tokenDaSessao=;expires=0;samesite=lax;path=/';
             contexto2.definirUsuarioLogado();
             historico.push('/entrar?redir='+urlAtual.pathname.slice(1));
             //historico.push('/entrar');
+          } if (erro.codigo == 409) { //sessão diferente
+            //contexto2.autenticarSessao();
+            //historico.push('/conta');
+            window.location.reload();
           } else {
             alert('Erro ao publicar anúncio. Verifique o console de seu navegador para mais detalhes.');
             if (componenteExiste)

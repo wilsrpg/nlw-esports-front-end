@@ -82,22 +82,27 @@ export default function CartaoDeAnuncio({
             throw resp.erro;
           if (document.getElementById(anuncio.idDoAnuncio))
             document.getElementById(anuncio.idDoAnuncio).style.borderColor = '';
-          if (componenteExiste)
-            funcExcluirAnuncio();
+          //if (componenteExiste)
+          //  funcExcluirAnuncio();
           alert('Anúncio excluído.');
           if (componenteExiste) {
             //definirConfirmandoExclusaoDoAnuncio(false);
             //definirAguardando(false);
             definirExcluindo(false);
           }
+          window.location.reload();
         })
         .catch(erro=>{
           console.log(erro);
-          if (erro.codigo == 401) {
+          if (erro.codigo == 401) { //sessão inexistente
             document.cookie = 'tokenDaSessao=;expires=0;samesite=lax;path=/';
             contexto2.definirUsuarioLogado();
             historico.push('/entrar?redir='+urlAtual.pathname.slice(1));
             //historico.push('/entrar');
+          } if (erro.codigo == 409) { //sessão diferente
+            //contexto2.autenticarSessao();
+            //historico.push('/conta');
+            window.location.reload();
           } else {
             alert('Erro ao excluir anúncio. Verifique o console de seu navegador para mais detalhes.');
             if (document.getElementById(anuncio.idDoAnuncio))

@@ -94,6 +94,13 @@ export default function ResultadosDaPesquisa({filtros, apenasDoUsuario}) {
   }, [urlAtual])
 
   useEffect(()=>{
+    if(apenasDoUsuario) {
+      const tokenDaSessao = contexto2.getCookie('tokenDaSessao');
+      if (!tokenDaSessao || !contexto2.usuarioLogado) {
+        window.location.reload();
+        return;
+      }
+    }
 		const tempoInicio = Date.now();
     const dados = {
       method: 'GET',
@@ -140,7 +147,7 @@ export default function ResultadosDaPesquisa({filtros, apenasDoUsuario}) {
     .then(resp=>resp.json())
     .then(resp=>{
       if (resp.erro)
-        throw resp.erro;
+        throw {erro: resp.erro, codigo: resp.codigo};
       if (componenteExiste) {
         definirErroAoObterDados(false);
         definirAnuncios(resp.anuncios);
@@ -205,7 +212,19 @@ export default function ResultadosDaPesquisa({filtros, apenasDoUsuario}) {
     })
     .catch(erro=>{
       console.log(erro);
-      if (componenteExiste) {
+      if(apenasDoUsuario) {
+        if (erro.codigo == 401) { //sessão inexistente
+          document.cookie = 'tokenDaSessao=;expires=0;samesite=lax;path=/';
+          contexto2.definirUsuarioLogado();
+          historico.push('/entrar?redir='+urlAtual.pathname.slice(1));
+          //historico.push('/entrar');
+        } if (erro.codigo == 409) { //sessão diferente
+          //contexto2.autenticarSessao();
+          //historico.push('/conta');
+          window.location.reload();
+        } else if (componenteExiste)
+          definirErroAoObterDados(true);
+      } else if (componenteExiste) {
         definirErroAoObterDados(true);
         //definirAguardando(false);
       }
@@ -540,10 +559,12 @@ export default function ResultadosDaPesquisa({filtros, apenasDoUsuario}) {
               anuncio={anuncio}
               funcConectar={()=>obterDiscord(anuncio.idDoAnuncio)}
               funcExcluirAnuncio={()=>{
-                if (componenteExiste)
-                  //definirAnuncioPraExcluir(anuncio.id);
-                  //definirIdDoAnuncioPraExcluir(anuncio.id);
-                  definirAnuncios(anuncios.filter(an=>an.idDoAnuncio != anuncio.idDoAnuncio));
+                //if (componenteExiste) {
+                //  //definirAnuncioPraExcluir(anuncio.id);
+                //  //definirIdDoAnuncioPraExcluir(anuncio.id);
+                //  definirAnuncios(anuncios.filter(an=>an.idDoAnuncio != anuncio.idDoAnuncio));
+                //  definirTotalDeAnuncios(anuncios.length);
+                //}
               }}
               excluindo={botoesDeExcluirDesabilitados}
               definirExcluindo={definirBotoesDeExcluirDesabilitados}

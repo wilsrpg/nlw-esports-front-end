@@ -138,9 +138,9 @@ export default function Configuracoes() {
             //definirErroAoValidar(false);
             //definirMensagem('Senha alterada com sucesso.');
             definirMensagem('');
-            if (email)
-              document.getElementById('email').value = email;
-            document.getElementById('email').value = '';
+            //if (email)
+            //  document.getElementById('email').value = email;
+            document.getElementById('email').value = resp.email;
             document.getElementById('senhaAtual').value = '';
             document.getElementById('novaSenha').value = '';
             document.getElementById('confirmarNovaSenha').value = '';
@@ -149,11 +149,15 @@ export default function Configuracoes() {
         })
         .catch(erro=>{
           console.log(erro);
-          if (erro.codigo == 401) {
+          if (erro.codigo == 401) { //sessão inexistente
             document.cookie = 'tokenDaSessao=;expires=0;samesite=lax;path=/';
             contexto2.definirUsuarioLogado();
             historico.push('/entrar?redir='+urlAtual.pathname.slice(1));
             //historico.push('/entrar');
+          } if (erro.codigo == 409) { //sessão diferente
+            //contexto2.autenticarSessao();
+            //historico.push('/conta');
+            window.location.reload();
           } else if (componenteExiste)
             definirMensagem(''+erro);
         })
@@ -228,11 +232,15 @@ export default function Configuracoes() {
         })
         .catch(erro=>{
           console.log(erro);
-          if (erro.codigo == 401) {
+          if (erro.codigo == 401) { //sessão inexistente
             document.cookie = 'tokenDaSessao=;expires=0;samesite=lax;path=/';
             contexto2.definirUsuarioLogado();
             historico.push('/entrar?redir='+urlAtual.pathname.slice(1));
             //historico.push('/entrar');
+          } if (erro.codigo == 409) { //sessão diferente
+            //contexto2.autenticarSessao();
+            //historico.push('/conta');
+            window.location.reload();
           } else {
             definirAguardandoExcluir(false);
             definirMensagemExcluir(''+erro);
@@ -289,11 +297,15 @@ export default function Configuracoes() {
         })
         .catch(erro=>{
           console.log(erro);
-          if (erro.codigo == 401) {
+          if (erro.codigo == 401) { //sessão inexistente
             document.cookie = 'tokenDaSessao=;expires=0;samesite=lax;path=/';
             contexto2.definirUsuarioLogado();
             historico.push('/entrar?redir='+urlAtual.pathname.slice(1));
             //historico.push('/entrar');
+          } if (erro.codigo == 409) { //sessão diferente
+            //contexto2.autenticarSessao();
+            //historico.push('/conta');
+            window.location.reload();
           } else
             alert('Erro ao tentar desconectar outros dispositivos. Verifique o console de seu navegador para\
             mais detalhes.');
