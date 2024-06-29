@@ -8,7 +8,7 @@ export default function CartaoDeJogo({jogo, funcDefinirJogoProModal}) {
       <img className='imagemDoJogo' src={jogo.urlImagem} alt={`Imagem do jogo ${jogo.nome}`}/>
       <div className='gradientePretoEmbaixo'>
         <strong>{jogo.nome}</strong>
-        <p>{jogo.qtdeAnuncios} anúncio{jogo.qtdeAnuncios > 1 && 's'}</p>
+        <p>{jogo.qtdeAnuncios == 0 ? 'Nenhum' : jogo.qtdeAnuncios} anúncio{jogo.qtdeAnuncios > 1 && 's'}</p>
       </div>
     </div>
   )
