@@ -20,11 +20,8 @@ import RecuperarConta from './paginas/RecuperarConta'
 import RedefinirSenha from './paginas/RedefinirSenha'
 
 /*falta:
--não reutilizar id no banco de dados
--mudar nomenclatura no banco de dados pra este_padrao: NÃO, em outro projeto faço isso
 -verificar envio de e-mails
--cadastrar jogo? NÃO
--alterar nome da coluna idDoAnuncio da tabela Anuncios para "id" e fazer a correspondência nos arquivos
+-alterar nome da coluna idDoAnuncio da tabela Anuncios para 'id' e fazer a correspondência nos arquivos
   CartaoDeAnuncio e ResultadosDaPesquisa
 */
 
