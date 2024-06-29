@@ -59,6 +59,12 @@ export default function FormularioDeEntrada({funcFecharMenu, cabecalho, suspenso
         definirMensagem('Digite sua senha.');
       return;
     }
+    if (contexto2.getCookie('tokenDaSessao')) {
+      alert('Já existe um usuário logado no sistema.');
+      historico.push('/conta');
+      //definirMensagem('');
+      return;
+    }
     if (dados.manterSessao == 'on')
       dados.manterSessao = true;
     else
@@ -111,7 +117,10 @@ export default function FormularioDeEntrada({funcFecharMenu, cabecalho, suspenso
           definirMensagem(''+erro);
         else if (urlAtual.pathname != '/entrar')
           historico.push(
-            '/entrar'+(urlAtual.pathname != '/registrar' ? '?redir='+urlAtual.pathname.slice(1) : ''),
+            '/entrar'
+            + (urlAtual.pathname != '/' && urlAtual.pathname != '/registrar'
+              ? '?redir='+urlAtual.pathname.slice(1)
+              : ''),
             {erro, nomeDoUsuario}
           );
         definirAguardando(false);
