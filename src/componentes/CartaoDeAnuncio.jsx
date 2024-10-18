@@ -10,7 +10,7 @@ export default function CartaoDeAnuncio({
 }) {
   let componenteExiste = true;
   const contexto2 = useContext(contexto);
-  const dias = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+  const dias = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
   const [aguardando, definirAguardando] = useState(false);
   const [confirmandoExclusaoDoAnuncio, definirConfirmandoExclusaoDoAnuncio] = useState(false);
   const historico = useHistory();

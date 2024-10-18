@@ -9,11 +9,11 @@ export default function ModalParaCriarAnuncio({funcRecarregarJogos,funcFechar}) 
   const [jogos, definirJogos] = useState();
   const [dias, definirDias] = useState([
     {abrev:'D', dia:'domingo', marcado:false},
-    {abrev:'S', dia:'segunda', marcado:false},
-    {abrev:'T', dia:'terça', marcado:false},
-    {abrev:'Q', dia:'quarta', marcado:false},
-    {abrev:'Q', dia:'quinta', marcado:false},
-    {abrev:'S', dia:'sexta', marcado:false},
+    {abrev:'S', dia:'segunda-feira', marcado:false},
+    {abrev:'T', dia:'terça-feira', marcado:false},
+    {abrev:'Q', dia:'quarta-feira', marcado:false},
+    {abrev:'Q', dia:'quinta-feira', marcado:false},
+    {abrev:'S', dia:'sexta-feira', marcado:false},
     {abrev:'S', dia:'sábado', marcado:false},
   ]);
   //const [usaChatDeVoz, definirUsaChatDeVoz] = useState(false);

@@ -11,7 +11,7 @@ export default function FormularioDePesquisa({filtros, apenasDoUsuario}) {
   const [jogos, definirJogos] = useState();
   const [opcoesTempo, definirOpcoesTempo] = useState(filtros.opcoesTempo || '');
   const [opcoesTempoEntre, definirOpcoesTempoEntre] = useState(false);
-  const dias = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+  const dias = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
   const [diasDisponiveis, definirDiasDisponiveis] = useState(['']);
   const [aplicandoDisponilibidade, definirAplicandoDisponilibidade] = useState(false);
   const historico = useHistory();

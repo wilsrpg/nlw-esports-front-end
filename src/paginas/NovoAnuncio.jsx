@@ -10,14 +10,14 @@ export default function NovoAnuncio() {
   const contexto2 = useContext(contexto);
   const [erroAoObterDados, definirErroAoObterDados] = useState(false);
   const [jogos, definirJogos] = useState();
-  const dias = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+  const dias = ['domingo','segunda-feira','terça-feira','quarta-feira','quinta-feira','sexta-feira','sábado'];
   //const dias = [
   //  {abrev:'D', nome:'domingo'},
-  //  {abrev:'S', nome:'segunda'},
-  //  {abrev:'T', nome:'terça'},
-  //  {abrev:'Q', nome:'quarta'},
-  //  {abrev:'Q', nome:'quinta'},
-  //  {abrev:'S', nome:'sexta'},
+  //  {abrev:'S', nome:'segunda-feira'},
+  //  {abrev:'T', nome:'terça-feira'},
+  //  {abrev:'Q', nome:'quarta-feira'},
+  //  {abrev:'Q', nome:'quinta-feira'},
+  //  {abrev:'S', nome:'sexta-feira'},
   //  {abrev:'S', nome:'sábado'},
   //];
   //const [usaChatDeVoz, definirUsaChatDeVoz] = useState(false);
