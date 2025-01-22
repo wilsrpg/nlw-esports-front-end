@@ -53,7 +53,7 @@ export default function RecuperarConta() {
     .catch(erro=>{
       console.log(erro);
       if (componenteExiste) {
-        definirMensagem(''+erro);
+        definirMensagem('Erro ao enviar e-mail. Verifique o console de seu navegador para mais detalhes.');
         definirAguardando(false);
       }
     });
