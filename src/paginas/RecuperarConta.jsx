@@ -53,7 +53,12 @@ export default function RecuperarConta() {
     .catch(erro=>{
       console.log(erro);
       if (componenteExiste) {
-        definirMensagem('Erro ao enviar e-mail. Verifique o console de seu navegador para mais detalhes.');
+        let erroString = 'Erro ao enviar e-mail. Verifique o console de seu navegador para mais detalhes.';
+        if (typeof erro == 'string')
+          erroString = erro;
+        if (erro == 'TypeError: NetworkError when attempting to fetch resource.')
+          erroString = 'Não foi possível se comunicar com o servidor.';
+        definirMensagem(erroString);
         definirAguardando(false);
       }
     });
